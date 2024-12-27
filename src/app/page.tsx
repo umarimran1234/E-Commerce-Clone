@@ -74,7 +74,7 @@ export default function Home() {
                     height="100%"
                     src="https://www.youtube.com/embed/0GnL-niUM2E"
                     title="YouTube video player"
-                    style={{ display: "none;" }}
+                    style={{ display: "none" }}
                   ></iframe>
                 </div>
 
