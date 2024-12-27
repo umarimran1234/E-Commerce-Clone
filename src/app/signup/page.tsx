@@ -6,6 +6,7 @@ import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { FaBars } from "react-icons/fa";
 
 const SignupPage = () => {
   const session = useSession();

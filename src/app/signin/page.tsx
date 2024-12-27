@@ -91,17 +91,12 @@ const SigninPage = () => {
                           </Link>
                         </>
                       ) : (
-                        <>
-                          <span className="hidden px-7 py-3 text-base font-medium text-dark dark:text-white md:block">
-                            {session?.data?.user?.name}
-                          </span>
                           <button
                             onClick={() => signOut()}
                             className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9"
                           >
                             Log Out
                           </button>
-                        </>
                       )}
                     </div>
                   </li>
@@ -157,17 +152,12 @@ const SigninPage = () => {
                           </Link>
                         </>
                       ) : (
-                        <>
-                          <span className="hidden px-7 py-3 text-base font-medium text-dark dark:text-white md:block">
-                            {session?.data?.user?.name}
-                          </span>
                           <button
                             onClick={() => signOut()}
                             className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9"
                           >
                             Log Out
                           </button>
-                        </>
                       )}
                     </div>
                   </li>
