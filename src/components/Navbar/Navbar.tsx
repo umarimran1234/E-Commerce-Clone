@@ -42,12 +42,14 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         {/* Logo */}
         <div className="text-2xl font-bold">
-          <Image
-            width={200}
-            height={200}
-            src="/images/logoFornavbar2.jpg"
-            alt="Logo"
-          />
+          <Link href={"/"}>
+            <Image
+              width={200}
+              height={200}
+              src="/images/logoFornavbar2.jpg"
+              alt="Logo"
+            />
+          </Link>
         </div>
 
         {/* Shop Now Button */}
@@ -56,7 +58,7 @@ const Navbar = () => {
             <ul className="flex   space-x-8 text-white">
               <li>
                 {" "}
-                <Link href={"#"}>WHO WE ARE</Link>{" "}
+                <Link href={"/who-we-are"}>WHO WE ARE</Link>{" "}
               </li>
               <li>
                 {" "}
