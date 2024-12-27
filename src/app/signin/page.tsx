@@ -1,20 +1,182 @@
+"use client";
 import Link from "next/link";
-
-import { Metadata } from "next";
 import LoginForm from "@/components/LoginForm";
 import SocialButton from "@/components/SocialSignIn";
-
-export const metadata: Metadata = {
-  title: "Sign In Page",
-  description: "This is Sign In Page",
-  // other metadata
-};
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { FaBars } from "react-icons/fa";
+import { signOut, useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
 const SigninPage = () => {
+  const session = useSession();
+  const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScreenSmall, setIsScreenSmall] = useState(false);
+
+  // Detect screen size to toggle hamburger
+  useEffect(() => {
+    const handleResize = () => {
+      setIsScreenSmall(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const menuElement = document.querySelector(".mobile-menu");
+      if (
+        isMenuOpen &&
+        menuElement &&
+        !menuElement.contains(e.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [isMenuOpen]);
+
   return (
     <>
-      <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
-        <div className="container">
+      <section className="relative z-10 overflow-hidden pb-16">
+        {/* Navbar */}
+        <nav
+          className="navbar fixed  w-full bg-black "
+          style={{ zIndex: "  9999999" }}
+        >
+          <div className="container mx-auto flex justify-between items-center py-4 px-6">
+            {/* Logo */}
+            <div className="text-2xl font-bold">
+              <Link href={"/"}>
+                <Image
+                  width={200}
+                  height={200}
+                  src="/images/logoFornavbar2.jpg"
+                  alt="Logo"
+                />
+              </Link>
+            </div>
+
+            {/* Shop Now Button */}
+            <div className="flex items-center">
+              {!isScreenSmall && (
+                <ul className="flex   space-x-8 text-white">
+                  <li>
+                    <div className="flex items-center justify-end gap-2 pr-16 lg:pr-0">
+                      {!session.data ? (
+                        <>
+                          <Link
+                            href="/signin"
+                            className={`ease-in-up ${
+                              pathname === "/signin"
+                                ? "bg-black text-white font-bold"
+                                : "bg-white text-black "
+                            } hidden rounded-sm bg-primary px-8 py-3 text-base shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9`}
+                          >
+                            Sign In
+                          </Link>
+                          <Link
+                            href="/signup"
+                            className={`ease-in-up ${
+                              pathname === "/signup"
+                                ? "bg-black text-white font-bold"
+                                : "bg-white text-black "
+                            } hidden rounded-sm bg-primary px-8 py-3 text-base shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9`}
+                          >
+                            Sign Up
+                          </Link>
+                        </>
+                      ) : (
+                        <>
+                          <span className="hidden px-7 py-3 text-base font-medium text-dark dark:text-white md:block">
+                            {session?.data?.user?.name}
+                          </span>
+                          <button
+                            onClick={() => signOut()}
+                            className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9"
+                          >
+                            Log Out
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  </li>
+                </ul>
+              )}
+
+              {/* Hamburger Icon for Mobile */}
+              {isScreenSmall && (
+                <button
+                  className={`ml-4 ${isMenuOpen ? "hidden" : "block"}`}
+                  onClick={() => setIsMenuOpen(true)}
+                >
+                  <div className="w-6 h-0.5 bg-yellow-500 mb-1"></div>
+                  <div className="w-6 h-0.5 bg-yellow-500 mb-1"></div>
+                  <div className="w-6 h-0.5 bg-yellow-500"></div>
+                </button>
+              )}
+            </div>
+
+            {/* Mobile Menu */}
+            {isMenuOpen && (
+              <div className="mobile-menu absolute top-0 right-0 w-64 h-screen bg-black bg-opacity-90 flex flex-col justify-center items-start p-8 space-y-6 text-white transform transition-transform duration-300">
+                <button
+                  className={`ml-4 ${!isMenuOpen ? "hidden" : "block"}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <FaBars color="white" />
+                </button>
+                <ul className="text-left text-lg space-y-4">
+                <li>
+                    <div className="flex items-center justify-end gap-2 pr-16 lg:pr-0">
+                      {!session.data ? (
+                        <>
+                          <Link
+                            href="/signin"
+                            className={`ease-in-up ${
+                              pathname === "/signin"
+                                ? "bg-black text-white font-bold"
+                                : "bg-white text-black "
+                            } hidden rounded-sm bg-primary px-8 py-3 text-base shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9`}
+                          >
+                            Sign In
+                          </Link>
+                          <Link
+                            href="/signup"
+                            className={`ease-in-up ${
+                              pathname === "/signup"
+                                ? "bg-black text-white font-bold"
+                                : "bg-white text-black "
+                            } hidden rounded-sm bg-primary px-8 py-3 text-base shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9`}
+                          >
+                            Sign Up
+                          </Link>
+                        </>
+                      ) : (
+                        <>
+                          <span className="hidden px-7 py-3 text-base font-medium text-dark dark:text-white md:block">
+                            {session?.data?.user?.name}
+                          </span>
+                          <button
+                            onClick={() => signOut()}
+                            className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9"
+                          >
+                            Log Out
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+        </nav>
+        <div className="container mt-20">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
               <div className="mx-auto max-w-[500px] rounded bg-white px-6 py-10 shadow-three dark:bg-dark sm:p-[60px]">
