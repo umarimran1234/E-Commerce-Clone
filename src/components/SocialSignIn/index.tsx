@@ -2,27 +2,31 @@
 
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 import Swal from "sweetalert2";
 
 const SocialButton = () => {
   const router = useRouter();
   const session = useSession();
+
   const handleSocialLogin = async () => {
-    // console.log("Button Clicked");
+    // Trigger the login
     signIn("google");
   };
 
-  if (session.status === "authenticated") {
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "User login successful",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-    router.push("/");
-  }
+  // Use useEffect to handle the navigation after the component has rendered
+  useEffect(() => {
+    if (session.status === "authenticated") {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "User login successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      router.push("/"); // Navigate after successful login
+    }
+  }, [session.status, router]); // Ensure useEffect runs when session status changes
 
   return (
     <>
