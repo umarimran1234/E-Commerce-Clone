@@ -15,27 +15,37 @@ const ElevateSection = () => {
         ></Image>
 
         {/* Right Section - Content */}
-        <div className="lg:w-1/2 text-center lg:text-left absolute top-0">
-          <h5 className="text-gray-600 uppercase tracking-widest text-sm">
-            Athleisure
-          </h5>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold">
-            ELEVATE <span className="text-yellow-500">YOUR GAME</span>
+        <div className="px-4 absolute text-right bottom-1/4 right-0">
+          <h5 className="uppercase tracking-widest text-[26px]">Athleisure</h5>
+          <h1 className="font-bold flex flex-col">
+            <span className="text-8xl font-bold outline-black2">ELEVATE</span>
+            <p>
+              <span className="text-6xl">YOUR</span>{" "}
+              <span className="text-yellow-500 text-8xl"> GAME</span>
+            </p>
           </h1>
-          <p className="mt-4 text-gray-700 text-sm md:text-base">
-            Be it a casual outing or a championship game, rise to the occasion
-            in style.
+          <p className="mt-4 text-gray-700 text-[26px] text-left border flex flex-col">
+            Be it a casual outing or a championship game,
+            <span>rise to the occasion in style.</span>
           </p>
-          <div className="mt-6 flex justify-center lg:justify-start items-center gap-4">
+          <div className="mt-6 flex justify-end items-center gap-4">
             {/* Placeholder for Icons */}
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center">
-                <p className="text-gray-500 text-xs">Icon</p>
-              </div>
-              <p className="text-sm text-gray-700">Shop Now On</p>
+              <p className="uppercase">Shop Now On</p>
             </div>
-            <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-              <p className="text-gray-500 text-xs">Icon</p>
+            <div className="flex items-center justify-center gap-2">
+              <Image
+                src={"/icons/web-bw.png"}
+                height={50}
+                width={50}
+                alt="Web Icon"
+              ></Image>
+              <Image
+                src={"/icons/myntra.png"}
+                height={56}
+                width={38}
+                alt="Mintra Icon"
+              ></Image>
             </div>
           </div>
         </div>

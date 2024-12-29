@@ -9,6 +9,12 @@
   -webkit-text-stroke: 1px gray;
 }
 
+.outline-black2 {
+  color: transparent;
+  opacity: 1;
+  -webkit-text-stroke: 2px black;
+}
+
 .outline-white {
   color: transparent;
   -webkit-text-stroke: 1px white;
