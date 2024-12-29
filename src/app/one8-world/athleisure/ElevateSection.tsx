@@ -11,24 +11,24 @@ const ElevateSection = () => {
           height={1000}
           width={1000}
           alt="Elevate Section Image"
-          className="relative w-full"
+          className="relative w-full h-screen md:h-auto"
         ></Image>
 
         {/* Right Section - Content */}
-        <div className="px-4 absolute text-right bottom-1/4 right-0">
-          <h5 className="uppercase tracking-widest text-[26px]">Athleisure</h5>
+        <div className="md:px-4 px-1 absolute text-right lg:bottom-14 md:bottom-10 bottom-0 right-0">
+          <h5 className="uppercase tracking-widest md:text-[26px]">Athleisure</h5>
           <h1 className="font-bold flex flex-col">
-            <span className="text-8xl font-bold outline-black2">ELEVATE</span>
+            <span className="lg:text-8xl md:text-5xl text-xl font-bold outline-black2">ELEVATE</span>
             <p>
-              <span className="text-6xl">YOUR</span>{" "}
-              <span className="text-yellow-500 text-8xl"> GAME</span>
+              <span className="lg:text-6xl md:text-4xl">YOUR</span>{" "}
+              <span className="text-yellow-500 lg:text-8xl md:text-5xl text-xl"> GAME</span>
             </p>
           </h1>
-          <p className="mt-4 text-gray-700 text-[26px] text-left border flex flex-col">
+          <p className="mt-4 text-gray-700 md:w-auto w-1/2 ml-auto lg:text-[26px] text-left flex flex-col">
             Be it a casual outing or a championship game,
             <span>rise to the occasion in style.</span>
           </p>
-          <div className="mt-6 flex justify-end items-center gap-4">
+          <div className="mt-6 flex justify-end items-center md:gap-4 gap-2">
             {/* Placeholder for Icons */}
             <div className="flex items-center gap-2">
               <p className="uppercase">Shop Now On</p>
