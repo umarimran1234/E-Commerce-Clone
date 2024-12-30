@@ -17,7 +17,7 @@ const FormComponent = () => {
     };
 
     try {
-      const resp = await fetch("http://localhost:3000/signup/api", {
+      const resp = await fetch("https://e-commerce-clone-tawny.vercel.app/signup/api", {
         method: "POST",
         body: JSON.stringify(newUser),
         headers: {
