@@ -7,6 +7,7 @@ import { FaBars } from "react-icons/fa";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScreenSmall, setIsScreenSmall] = useState(false);
+  const [showList, setShowList] = useState(false);
 
   // Detect screen size to toggle hamburger
   useEffect(() => {
@@ -42,25 +43,54 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         {/* Logo */}
         <div className="text-2xl font-bold">
-          <Image
-            width={200}
-            height={200}
-            src="/images/logoFornavbar2.jpg"
-            alt="Logo"
-          />
+          <Link href={"/"}>
+            <Image
+              width={200}
+              height={200}
+              src="/images/logoFornavbar2.jpg"
+              alt="Logo"
+            />
+          </Link>
         </div>
 
         {/* Shop Now Button */}
         <div className="flex items-center">
           {!isScreenSmall && (
-            <ul className="flex   space-x-8 text-white">
+            <ul className="flex space-x-8 text-white">
               <li>
                 {" "}
-                <Link href={"#"}>WHO WE ARE</Link>{" "}
+                <Link href={"/who-we-are"}>WHO WE ARE</Link>{" "}
               </li>
               <li>
-                {" "}
-                <Link href={"#"}>one8 WORLD</Link>{" "}
+                <div
+                  className="relative"
+                  onMouseEnter={() => setShowList(true)}
+                  onMouseLeave={() => setShowList(false)}
+                >
+                  <button>one8 World</button>
+
+                  <ul
+                    className={`absolute top-full left-0 bg-white text-black shadow-lg rounded p-2 transition-all duration-300 ease-in-out ${
+                      showList ? "opacity-100 visible" : "opacity-0 invisible"
+                    }`}
+                  >
+                    <li>
+                      <Link href={"/one8-world/athleisure"}>Athleisure</Link>
+                    </li>
+                    <li>
+                      <Link href={"/one8-world/fragrances"}>Fragrances</Link>
+                    </li>
+                    <li>
+                      <Link href={"/one8-world/innerwear"}>Innerwear</Link>
+                    </li>
+                    <li>
+                      <Link href={"/one8-world/cafes"}>Cafes</Link>
+                    </li>
+                    <li>
+                      <Link href={"/one8-world/footwear"}>Footwear</Link>
+                    </li>
+                  </ul>
+                </div>
               </li>
               <li>
                 {" "}

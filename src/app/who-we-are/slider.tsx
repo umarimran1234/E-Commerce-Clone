@@ -60,7 +60,7 @@ const SliderBanner = () => {
               <div className="h-80 w-80">
                 {/* Using Next.js Image Component */}
                 <Image
-                  src="/placeholder-image.jpg"
+                  src="/images/virat_kohli_slider4.jpg"
                   alt="Player"
                   layout="fill" // Allows the image to fill the parent container
                   objectFit="cover" // Makes the image cover the container area
@@ -103,7 +103,7 @@ const SliderBanner = () => {
               <div className="h-80 w-80">
                 {/* Using Next.js Image Component */}
                 <Image
-                  src="/placeholder-image.jpg"
+                  src="/images/virat_kohli_slider4.jpg"
                   alt="Player"
                   layout="fill" // Allows the image to fill the parent container
                   objectFit="cover" // Makes the image cover the container area
@@ -146,7 +146,7 @@ const SliderBanner = () => {
               <div className="h-80 w-80">
                 {/* Using Next.js Image Component */}
                 <Image
-                  src="/placeholder-image.jpg"
+                  src="/images/virat_kohli_slider4.jpg"
                   alt="Player"
                   layout="fill" // Allows the image to fill the parent container
                   objectFit="cover" // Makes the image cover the container area
