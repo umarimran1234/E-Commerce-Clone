@@ -11,7 +11,7 @@ const ElevateSection = () => {
           height={1000}
           width={1000}
           alt="Elevate Section Image"
-          className="relative w-full h-screen md:h-auto"
+          className="relative w-full h-screen"
         ></Image>
 
         {/* Right Section - Content */}
