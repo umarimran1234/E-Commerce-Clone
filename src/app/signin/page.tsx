@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 
 const SigninPage = () => {
   const session = useSession();
-  const pathname = usePathname()
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScreenSmall, setIsScreenSmall] = useState(false);
 
@@ -91,12 +91,12 @@ const SigninPage = () => {
                           </Link>
                         </>
                       ) : (
-                          <button
-                            onClick={() => signOut()}
-                            className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9"
-                          >
-                            Log Out
-                          </button>
+                        <button
+                          onClick={() => signOut()}
+                          className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9"
+                        >
+                          Log Out
+                        </button>
                       )}
                     </div>
                   </li>
@@ -126,7 +126,7 @@ const SigninPage = () => {
                   <FaBars color="white" />
                 </button>
                 <ul className="text-left text-lg space-y-4">
-                <li>
+                  <li>
                     <div className="flex items-center justify-end gap-2 pr-16 lg:pr-0">
                       {!session.data ? (
                         <>
@@ -152,12 +152,12 @@ const SigninPage = () => {
                           </Link>
                         </>
                       ) : (
-                          <button
-                            onClick={() => signOut()}
-                            className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9"
-                          >
-                            Log Out
-                          </button>
+                        <button
+                          onClick={() => signOut()}
+                          className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9"
+                        >
+                          Log Out
+                        </button>
                       )}
                     </div>
                   </li>
@@ -171,11 +171,8 @@ const SigninPage = () => {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[500px] rounded bg-white px-6 py-10 shadow-three dark:bg-dark sm:p-[60px]">
                 <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                  Sign in to your account
+                  Login to your account
                 </h3>
-                <p className="mb-11 text-center text-base font-medium text-body-color">
-                  Login to your account.
-                </p>
                 <SocialButton></SocialButton>
                 <div className="mb-8 flex items-center justify-center">
                   <span className="hidden h-[1px] w-full max-w-[70px] bg-body-color/50 sm:block"></span>
