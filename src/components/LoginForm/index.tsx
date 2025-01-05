@@ -3,6 +3,7 @@ import React from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import Link from "next/link";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -12,7 +13,8 @@ const LoginForm = () => {
     const form = event.target as HTMLFormElement;
 
     const email = (form.elements.namedItem("email") as HTMLInputElement).value;
-    const password = (form.elements.namedItem("password") as HTMLInputElement).value;
+    const password = (form.elements.namedItem("password") as HTMLInputElement)
+      .value;
 
     const resp = await signIn("credentials", {
       email,
@@ -101,12 +103,12 @@ const LoginForm = () => {
           </label>
         </div>
         <div>
-          <a
-            href="#0"
+          <Link
+            href="/forgot-password"
             className="text-sm font-medium text-primary hover:underline"
           >
             Forgot Password?
-          </a>
+          </Link>
         </div>
       </div>
       <div className="mb-6">
