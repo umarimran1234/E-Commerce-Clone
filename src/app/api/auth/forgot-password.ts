@@ -5,37 +5,40 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === "POST") {
-    const { email } = req.body;
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method Not Allowed" });
+  }
 
-    // Validate the email and generate a token (pseudo-code)
-    const token = "secure-random-token"; // Replace with actual logic
-    const resetLink = `https://e-commerce-clone-tawny.vercel.app/reset-password?token=${token}`;
+  const { email } = req.body;
 
-    // Store the token in the database (e.g., associated with the user)
+  if (!email) {
+    return res.status(400).json({ message: "Email is required" });
+  }
 
-    // Send email with the reset link
+  try {
+    // Simulate generating a password reset token
+    const resetToken = Math.random().toString(36).substr(2);
+
+    // Set up email transport (configure your SMTP settings here)
     const transporter = nodemailer.createTransport({
-      service: "Gmail",
+      service: "Gmail", // or your email provider
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: process.env.SMTP_USER, // Your email
+        pass: process.env.SMTP_PASS, // Your email password
       },
     });
 
-    try {
-      await transporter.sendMail({
-        to: email,
-        subject: "Password Reset Request",
-        text: `Click the link below to reset your password:\n\n${resetLink}`,
-      });
-      res.status(200).json({ message: "Password reset email sent" });
-    } catch (error) {
-      console.error("Failed to send email:", error); // Log the error
-      res.status(500).json({ error: "Failed to send email" });
-    }
-  } else {
-    res.setHeader("Allow", ["POST"]);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+    // Send password reset email
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Password Reset Request",
+      html: `<p>Click <a href="https://e-commerce-clone-tawny.vercel.app/reset-password?token=${resetToken}">here</a> to reset your password.</p>`,
+    });
+
+    return res.status(200).json({ message: "Password reset email sent." });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Error sending email." });
   }
 }
